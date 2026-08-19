@@ -33,16 +33,22 @@ print(f)                                문자열 1개 출력하는 예제
 아래 구문을 사용하기 위해서는 import sys가 필요합니다.
 단, 채점을 위해 코드를 제출하실 때에는 반드시 아래 구문을 지우거나 주석 처리 하셔야 합니다.
 '''
-#import sys
-#sys.stdin = open("input.txt", "r")
+import sys
+sys.stdin = open("input.txt", "r")
 
-T = int(input())
-# 여러개의 테스트 케이스가 주어지므로, 각각을 처리합니다.
-for test_case in range(1, T + 1):
-    # ///////////////////////////////////////////////////////////////////////////////////
-    '''
+# T = int(input())
+# num_list = list(map(int, input().split()))
+# num_sum = 0
+# # 여러개의 테스트 케이스가 주어지므로, 각각을 처리합니다.
+# for test_case in range(1, T + 1):
+#     num_sum += num_list[test_case - 1]
+# print(num_sum)
 
-        이 부분에 여러분의 알고리즘 구현이 들어갑니다.
+n = int(input())
+num_list = list(map(int, input().split()))
+num_sum = 0
 
-    '''
-    # ///////////////////////////////////////////////////////////////////////////////////
+for num in num_list:
+    num_sum += num
+
+print(num_sum, int(num_sum / n))
