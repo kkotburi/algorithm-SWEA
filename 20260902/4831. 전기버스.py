@@ -24,7 +24,7 @@ for test_case in range(1, T + 1):
         # else:
         #     continue
 
-        if i + 1 < m and gas[i + 1] <= next:
+        if i + 1 < m & gas[i + 1] <= next:
             continue
         else:
             now = gas[i]

@@ -8,7 +8,7 @@ for test_case in range(1, 11):
     while dump > 0:
         max = 1
         max_idx = 0
-        min = 1000
+        min = 100
         min_idx = 0
 
         for i in range(len(boxes)):
@@ -22,7 +22,7 @@ for test_case in range(1, 11):
         boxes[max_idx] -= 1
         boxes[min_idx] += 1
 
-        if dump == 1:
-            print(f'#{test_case}', max - min)
-
         dump -= 1
+
+        if dump == 0:
+            print(f'#{test_case}', max - min)
