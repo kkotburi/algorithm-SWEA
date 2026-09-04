@@ -12,9 +12,9 @@ for test_case in range(1, T + 1):
             for column in range(n - m + 1):
                 sum = 0
 
-                for i in range(m):
-                    for j in range(m):
-                        sum += area[row + i][column + j]
+                for i in range(row, row + m):
+                    for j in range(column, column + m):
+                        sum += area[i][j]
             
                 if sum > max:
                     max = sum
