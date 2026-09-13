@@ -1,42 +1,38 @@
 import sys
 sys.stdin = open("input.txt", "r")
 
-def operator(a, b, letter):
-    operations = {
-        "+": lambda: a + b,
-        "-": lambda: a - b,
-        "*": lambda: a * b,
-        "/": lambda: a / b,
-        "**": lambda: a ** b,
-        "//": lambda: a // b,
-        "%": lambda: a % b
-    }
-
-    return operations[letter]()
+operations = {
+    "+": lambda a, b: a + b,
+    "-": lambda a, b: a - b,
+    "*": lambda a, b: a * b,
+    "/": lambda a, b: a / b,
+    "//": lambda a, b: a // b,
+    "%": lambda a, b: a % b,
+    "**": lambda a, b: a ** b
+}
 
 T = int(input())
 
 for test_case in range(1, 1 + T):
-    code = list(map(str, input().split()))
+    code = input().split()
     stack = []
-    result = 1
+    error = False
 
-    for i in range(len(code)):
-        if code[i] == ".":
+    for token in code:
+        if token == ".":
             break
 
         try:
-            stack.append(int(code[i]))
+            stack.append(int(token))
         except ValueError:
-            if len(stack) > 1:
-                b = stack.pop()
-                a = stack.pop()
-                stack.append(operator(a, b, code[i]))
-            else:
-                result = 0
+            if len(stack) < 2:
+                error = True
                 break
 
-    if result == len(stack) == 1:
+            b, a= stack.pop(), stack.pop()
+            stack.append(operations[token](a, b))
+
+    if not error and len(stack) == 1:
         result = int(stack[0])
     else:
         result = "error"
