@@ -20,5 +20,6 @@ for i in range(E):
     adj_list[v].append(w)
     adj_list[w].append(v)
 
+print(adj_list)
 visited = [0] * (V + 1)
 dfs(1)
