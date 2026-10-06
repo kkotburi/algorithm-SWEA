@@ -30,7 +30,7 @@
 def backtrack(position, n, stack):
     # 모든 자리에 숫자를 채우면 출력
     if position == n:
-        return print(stack)
+        return print("결과", stack)
 
     # 현재 위치에 넣을 수 있는 숫자 찾기
     candidates = make_candidates(position, n, stack)
@@ -39,8 +39,8 @@ def backtrack(position, n, stack):
     # 후보 숫자를 하나씩 선택
     for number in candidates:
         stack[position] = number
-        backtrack(position + 1, n, stack) 
-
+        print("stack", stack)
+        backtrack(position + 1, n, stack)
 
 def make_candidates(position, n, stack):
     used = [False] * (n + 1)
