@@ -44,7 +44,7 @@ for test_case in range(1, T + 1):
 
     print(f'#{test_case}', result)
 
-#  GPT + 최묘석
+# GPT + 최묘석
 # def valid(puzzle) :
 #     nums = set(range(1, 10))
 
