@@ -9,7 +9,7 @@ for test_case in range(1, T + 1):
     N, K = map(int, input().split())
     result = 0
 
-    for i in range(2 ** 12):
+    for i in range(1 << 12):
         total = 0
         count = 0
 
