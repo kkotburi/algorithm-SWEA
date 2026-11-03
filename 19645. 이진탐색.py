@@ -4,10 +4,9 @@ sys.stdin = open("input.txt", "r")
 T = int(input())
 
 for test_case in range(1, T + 1):
-    N = int(input())
-    arr = sorted(list(map(int, input().split())), reverse=True)
-    result = []
+    P, A, B = map(int, input().split())
+    result = ""
 
-    for n in range()
+
 
     print(f'#{test_case} {result}')
