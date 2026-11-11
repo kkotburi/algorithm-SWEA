@@ -35,3 +35,24 @@ def abc(level):
         used[i] = False
 
 abc(0)
+
+
+def abc():
+    if len(path) == n:
+        print(path)
+        return
+
+    for i in range(m):
+        if not used[i]:
+            used[i] = True
+            path.append(i)
+            abc()
+            path.pop()
+            used[i] = False
+
+
+n, m = map(int, input().split())
+path = []
+used = [False] * m
+
+abc()
