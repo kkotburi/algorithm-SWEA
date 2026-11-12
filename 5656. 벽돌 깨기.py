@@ -3,33 +3,52 @@ sys.stdin = open("input.txt", "r")
 
 T = int(input())
 
-for test_case in range(1, T + 1):
+for test_case in range(1, 2):
     N, W, H = map(int, input().split())
     bricks = [list(map(int, input().split())) for _ in range(H)]
     result = 0
-
-    print(N, W, H)
-    print(bricks)
 
     # 조합으로 구술 떨어뜨릴 곳 선택(횟수, 벽돌 0일 때 break)
     # 주변 벽돌 제거
     # 제거 벽돌 최댓값
 
     path = [None] * N
+    directions = [(1, 0), (-1, 0), (0, 1), (0, -1)]
 
-    def permutations(level):
+    def permutations(level, bricks):
+        # global bricks
+
         if level == N:
-            print(path)
+            print("여기")
+            for i in range(H):
+                print(bricks[i])
             return
 
-        for i in range(W):
-            path[level] = i
-            permutations(level + 1)
-            path[level] = None
 
+        for col in range(W):
+            new_bricks = [[0] * W for _ in range(H)]
+            for i in range(H):
+                for j in range(W):
+                    new_bricks[i][j] = bricks[i][j]
+            for row in range(H):
+                if new_bricks[row][col] != 0:
+                    # 복사하고, 연쇄반응 일으키고 벽돌 정리하고
+
+                    power = new_bricks[row][col]
+                    new_bricks[row][col] = 0
+
+                    # for i in range(1, bricks_next[row][col]):
+                    #     for dr, dc in directions:
+                    #         ndr, ndc = row + (dr * i), col + (dc * i)
+                    #         if 0 <= ndr < H and 0 <= ndc < W:
+                    #             bricks[ndr][ndc] = 0
+
+                    permutations(level + 1, new_bricks)
+                    bricks[row][col] = power
+
+                    break
 
     permutations(0)
-    
 
     print(f'#{test_case} {result}')
 
